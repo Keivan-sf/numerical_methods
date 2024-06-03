@@ -218,10 +218,13 @@ def main():
         print("5. Lagrange (linear interpolation)")
         print("0. Exit")
         n = int(input("\nPlease choose an option: "))
+
         while n > 5 or n < 0:
             n = int(input("wrong input! please try again: "))
+
         if n == 0:
             return
+
         if n == 1:
             f = get_function_from_user()
             a = float(input("\nEnter a: "))
@@ -237,10 +240,10 @@ def main():
                 a, b = b, a
             iterations = int(input(
                 "Enter the number of iterations you want the program to perform (more than 0): "))
-            output = "Approximation of Root = " + \
-                str(bisection(a, b, f, iterations))
+            output = str(bisection(a, b, f, iterations))
             print("\n\n" + box_str(output) + "\n\n")
-        if n == 2:
+
+        elif n == 2:
             f = get_function_from_user()
             a = float(input("\nEnter a: "))
             b = float(input("\nEnter b: "))
@@ -255,26 +258,32 @@ def main():
                 a, b = b, a
             iterations = int(input(
                 "Enter the number of iterations you want the program to perform (more than 0): "))
-            output = "Approximation of Root = " + \
-                str(regula_falsi(a, b, f, iterations))
+            output = str(regula_falsi(a, b, f, iterations))
             print("\n\n" + box_str(output) + "\n\n")
-        if n == 3:
+
+        elif n == 3:
             f = get_function_from_user()
             x = float(input("\nEnter x: "))
             iterations = int(input(
                 "Enter the number of iterations you want the program to perform (more than 0): "))
-            output = "Approximation of Root = " + \
-                str(newton(x, f, iterations))
+            output = str(newton(x, f, iterations))
             print("\n\n" + box_str(output) + "\n\n")
-        if n == 4:
+
+        elif n == 4:
             f = get_function_from_user()
             x1 = float(input("\nEnter x1: "))
             x2 = float(input("\nEnter x2: "))
             iterations = int(input(
                 "Enter the number of iterations you want the program to perform (more than 0): "))
-            output = "Approximation of Root = " + \
-                str(secant(x1, x2, f, iterations))
+            output = str(secant(x1, x2, f, iterations))
             print("\n\n" + box_str(output) + "\n\n")
+
+        elif n == 5:
+            print("")
+            x, y, n = get_function_data_from_user()
+            polynomial_res = lagrange(x, y, n)
+            human_readable = polynomial_to_str(polynomial_res)
+            print("\n\n" + box_str(human_readable) + "\n\n")
 
 
 # x, y, n = get_function_data_from_user()
