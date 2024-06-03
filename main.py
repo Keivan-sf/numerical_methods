@@ -29,7 +29,7 @@ def bisection(a: float, b: float, f: Callable[[float], float], iterations: int):
             b = c
         else:
             return c
-    return a
+    return c
 
 
 def get_function_from_user() -> Callable[[float], float]:
