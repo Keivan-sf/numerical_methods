@@ -286,20 +286,4 @@ def main():
             print("\n\n" + box_str(human_readable) + "\n\n")
 
 
-# x, y, n = get_function_data_from_user()
-# print(polynomial_to_str(lagrange(x, y, n)))
 main()
-# f = get_function_from_user()
-# # c = bisection(1.2, 1.78, f, 200)
-# c1 = regula_falsi(1.2, 1.78, f, 20)
-# c2 = newton(1.2, f, 20)
-# c3 = secant(1.2, 1.78, f, 20)
-#
-#
-# print(c1, c2, c3, f(0, c1), f(0, c2), f(0, c3))
-# print(np.polymul((0), (0)))
-# print(np.polymul((2, 4), 1/4))
-# print(lagrange([-1, 0, 1], [1, 1, 3], 3))
-# print(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4))
-# print(polynomial_to_str(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4)))
-# print(polynomial_to_str(lagrange([-1, 6, 7], [1, 9, 10], 3)))
