@@ -102,12 +102,6 @@ def newton(x: float, f: Callable[[float, float], float],  iterations: int):
     return x
 
 
-def fixed_point(x: float, f: Callable[[float, float], float], iterations: int):
-    for _ in range(iterations):
-        x = f(0, x) + x
-    return x
-
-
 def get_function_from_user() -> Callable[[float, float], float]:
     print("\nPlease select a function to continue:\n")
     print("1. 4x^2 + 200x + 12")
@@ -136,6 +130,5 @@ f = get_function_from_user()
 # c = bisection(1.2, 1.78, f, 200)
 c1 = regula_falsi(1.2, 1.78, f, 20)
 c2 = newton(1.2, f, 20)
-c3 = fixed_point(1.2, f, 20)
 
-print(c1, c2, c3, f(0, c1), f(0, c2))
+print(c1, c2, f(0, c1), f(0, c2))
