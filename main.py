@@ -59,9 +59,6 @@ def get_function_from_user() -> Callable[[float], float]:
     print("3. 3x^4 + 100x + 55")
     print("4. sin(x)")
     print("5. cos(x)")
-    print("6. tan(x)")
-    print("7. cosh(x)")
-    print("8. sinh(x)")
     while (True):
         n = int(input("-> "))
         if n > 11 or n < 1:
@@ -77,18 +74,8 @@ def get_function_from_user() -> Callable[[float], float]:
             return math.sin
         if n == 5:
             return math.cos
-        if n == 6:
-            return math.tan
-        if n == 7:
-            return math.cosh
-        if n == 9:
-            return math.sinh
-        if n == 10:
-            return math.asin
-        if n == 11:
-            return math.acos
 
 
 f = get_function_from_user()
-print(bisection(1, -1, f, 40))
-print(regula_falsi(1, -1, f, 30))
+c = bisection(1.2, 1.78, f, 200)
+print(c, f(c))
