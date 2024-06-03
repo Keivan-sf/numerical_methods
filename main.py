@@ -60,10 +60,6 @@ def cos(n, x):
 
 
 def bisection(a: float, b: float, f: Callable[[float, float], float], iterations: int):
-    """
-        f(a) must be positive
-        f(b) must be negative
-    """
     c = a
     for _ in range(iterations):
         c = (a + b)/2
@@ -78,10 +74,6 @@ def bisection(a: float, b: float, f: Callable[[float, float], float], iterations
 
 
 def regula_falsi(a: float, b: float, f: Callable[[float, float], float],  iterations: int):
-    """
-        f(a) must be positive
-        f(b) must be negative
-    """
     c = a
     for _ in range(iterations):
         fa = f(0, a)
