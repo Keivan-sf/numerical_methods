@@ -131,6 +131,19 @@ def lagrange(x: list[float], f: list[float], n: int):
     return sum
 
 
+def polynomial_to_str(p):
+    n = len(p)
+    s = []
+    j = 0
+    for i in p:
+        j += 1
+        I = round(i)
+        if i != 0:
+            s.append((str(I) if I > 1 or n - j == 0 else "") + ("x" if n - j > 0 else "") +
+                     ("" if n - j <= 1 else "^" + str(n - j)))
+    print(s)
+
+
 def get_function_from_user() -> Callable[[float, float], float]:
     print("\nPlease select a function to continue:\n")
     print("1. 4x^2 + 200x + 12")
@@ -167,3 +180,5 @@ def get_function_from_user() -> Callable[[float, float], float]:
 # print(np.polymul((2, 4), 1/4))
 print(lagrange([-1, 0, 1], [1, 1, 3], 3))
 print(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4))
+polynomial_to_str(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4))
+polynomial_to_str(lagrange([-1 , 6 , 7], [1 , 9 , 10], 3))
