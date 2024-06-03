@@ -198,6 +198,17 @@ def get_function_data_from_user() -> tuple[list[float], list[float], int]:
     return x, y, n
 
 
+def box_str(s: str):
+    n = len(s)
+    res = []
+    res.append("+"*(n+8))
+    res.append("+" + " "*(n+6) + "+")
+    res.append("+   " + s + "   +")
+    res.append("+" + " "*(n+6) + "+")
+    res.append("+"*(n+8))
+    return '\n'.join(res)
+
+
 def main():
     while True:
         print("1. Bisection")
@@ -226,8 +237,9 @@ def main():
                 a, b = b, a
             iterations = int(input(
                 "Enter the number of iterations you want the program to perform (more than 0): "))
-            print("\n\nApproximation of Root:",
-                  bisection(a, b, f, iterations), "\n\n")
+            output = "Approximation of Root = " + \
+                str(bisection(a, b, f, iterations))
+            print("\n\n" + box_str(output) + "\n\n")
 
 
 # x, y, n = get_function_data_from_user()
