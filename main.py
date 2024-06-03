@@ -180,7 +180,7 @@ def get_function_data_from_user() -> tuple[list[float], list[float], int]:
     print("\nEnter all X values separated via space, for example: 1.2 4 -11.4 1.5 ...")
     while True:
         x = [float(i) for i in input().split()]
-        if len(x) != 3:
+        if len(x) != n:
             print("you have to enter exactly", n,
                   "numbers since you have set it, please try again:")
             continue
@@ -189,7 +189,7 @@ def get_function_data_from_user() -> tuple[list[float], list[float], int]:
     print("\nEnter all Y values separated via space, for example: 1.7 5 22 1.52 ...")
     while True:
         y = [float(i) for i in input().split()]
-        if len(x) != 3:
+        if len(y) != n:
             print("you have to enter exactly", n,
                   "numbers since you have set it, please try again:")
             continue
