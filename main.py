@@ -32,6 +32,26 @@ def bisection(a: float, b: float, f: Callable[[float], float], iterations: int):
     return c
 
 
+def regula_falsi(a: float, b: float, f: Callable[[float], float],  iterations: int):
+    """
+        f(a) must be positive
+        f(b) must be negative
+    """
+    c = a
+    for _ in range(iterations):
+        fa = f(a)
+        fb = f(b)
+        c = (a*fb - b*fa) / (fb - fa)
+        fc = f(c)
+        if fc > 0:
+            a = c
+        elif fc < 0:
+            b = c
+        else:
+            return c
+    return c
+
+
 def get_function_from_user() -> Callable[[float], float]:
     print("\nPlease select a function to continue:\n")
     print("1. 4x^2 + 200x + 12")
@@ -69,4 +89,6 @@ def get_function_from_user() -> Callable[[float], float]:
             return math.acos
 
 
-print(bisection(1, -1, get_function_from_user(), 30))
+f = get_function_from_user()
+print(bisection(1, -1, f, 40))
+print(regula_falsi(1, -1, f, 30))
