@@ -1,5 +1,5 @@
 import math
-import numpy as np
+import numpy.polynomial.polynomial as np
 from typing import Callable
 
 
@@ -115,6 +115,22 @@ def secant(x1: float, x2: float, f: Callable[[float, float], float],  iterations
     return x2
 
 
+def lagrange(x: list[float], f: list[float], n: int):
+    sum = np.polymul((0), (0))
+    for i in range(n):
+        numerator = np.polymul((1), (1))
+        denominator = 1
+        for j in range(n):
+            if i == j:
+                continue
+            numerator = np.polymul((1, -x[j]), numerator)
+            denominator *= (x[i] - x[j])
+        Li = np.polymul(numerator, 1 / denominator)
+        Li_fi = np.polymul(Li, f[i])
+        sum = np.polyadd(sum, Li_fi)
+    return sum
+
+
 def get_function_from_user() -> Callable[[float, float], float]:
     print("\nPlease select a function to continue:\n")
     print("1. 4x^2 + 200x + 12")
@@ -139,10 +155,15 @@ def get_function_from_user() -> Callable[[float, float], float]:
             return cos
 
 
-f = get_function_from_user()
-# c = bisection(1.2, 1.78, f, 200)
-c1 = regula_falsi(1.2, 1.78, f, 20)
-c2 = newton(1.2, f, 20)
-c3 = secant(1.2, 1.78, f, 20)
-
-print(c1, c2, c3, f(0, c1), f(0, c2), f(0, c3))
+# f = get_function_from_user()
+# # c = bisection(1.2, 1.78, f, 200)
+# c1 = regula_falsi(1.2, 1.78, f, 20)
+# c2 = newton(1.2, f, 20)
+# c3 = secant(1.2, 1.78, f, 20)
+#
+#
+# print(c1, c2, c3, f(0, c1), f(0, c2), f(0, c3))
+# print(np.polymul((0), (0)))
+# print(np.polymul((2, 4), 1/4))
+print(lagrange([-1, 0, 1], [1, 1, 3], 3))
+print(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4))
