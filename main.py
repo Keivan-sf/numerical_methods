@@ -240,6 +240,41 @@ def main():
             output = "Approximation of Root = " + \
                 str(bisection(a, b, f, iterations))
             print("\n\n" + box_str(output) + "\n\n")
+        if n == 2:
+            f = get_function_from_user()
+            a = float(input("\nEnter a: "))
+            b = float(input("\nEnter b: "))
+            while True:
+                if (f(0, b) * f(0, a) >= 0):
+                    print("f(b) * f(a) must be negative, please try again\n")
+                    a = float(input("\nEnter a: "))
+                    b = float(input("\nEnter b: "))
+                    continue
+                break
+            if f(0, a) < 0 or f(0, b) > 0:
+                a, b = b, a
+            iterations = int(input(
+                "Enter the number of iterations you want the program to perform (more than 0): "))
+            output = "Approximation of Root = " + \
+                str(regula_falsi(a, b, f, iterations))
+            print("\n\n" + box_str(output) + "\n\n")
+        if n == 3:
+            f = get_function_from_user()
+            x = float(input("\nEnter x: "))
+            iterations = int(input(
+                "Enter the number of iterations you want the program to perform (more than 0): "))
+            output = "Approximation of Root = " + \
+                str(newton(x, f, iterations))
+            print("\n\n" + box_str(output) + "\n\n")
+        if n == 4:
+            f = get_function_from_user()
+            x1 = float(input("\nEnter x1: "))
+            x2 = float(input("\nEnter x2: "))
+            iterations = int(input(
+                "Enter the number of iterations you want the program to perform (more than 0): "))
+            output = "Approximation of Root = " + \
+                str(secant(x1, x2, f, iterations))
+            print("\n\n" + box_str(output) + "\n\n")
 
 
 # x, y, n = get_function_data_from_user()
