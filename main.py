@@ -198,8 +198,41 @@ def get_function_data_from_user() -> tuple[list[float], list[float], int]:
     return x, y, n
 
 
-x, y, n = get_function_data_from_user()
-print(polynomial_to_str(lagrange(x, y, n)))
+def main():
+    while True:
+        print("1. Bisection")
+        print("2. Regula Falsi")
+        print("3. Newton")
+        print("4. Secant")
+        print("5. Lagrange (linear interpolation)")
+        print("0. Exit")
+        n = int(input("\nPlease choose an option: "))
+        while n > 5 or n < 0:
+            n = int(input("wrong input! please try again: "))
+        if n == 0:
+            return
+        if n == 1:
+            f = get_function_from_user()
+            a = float(input("\nEnter a: "))
+            b = float(input("\nEnter b: "))
+            while True:
+                if (f(0, b) * f(0, a) >= 0):
+                    print("f(b) * f(a) must be negative, please try again\n")
+                    a = float(input("\nEnter a: "))
+                    b = float(input("\nEnter b: "))
+                    continue
+                break
+            if f(0, a) < 0 or f(0, b) > 0:
+                a, b = b, a
+            iterations = int(input(
+                "Enter the number of iterations you want the program to perform (more than 0): "))
+            print("\n\nApproximation of Root:",
+                  bisection(a, b, f, iterations), "\n\n")
+
+
+# x, y, n = get_function_data_from_user()
+# print(polynomial_to_str(lagrange(x, y, n)))
+main()
 # f = get_function_from_user()
 # # c = bisection(1.2, 1.78, f, 200)
 # c1 = regula_falsi(1.2, 1.78, f, 20)
