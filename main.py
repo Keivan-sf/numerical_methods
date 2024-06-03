@@ -96,6 +96,12 @@ def regula_falsi(a: float, b: float, f: Callable[[float, float], float],  iterat
     return c
 
 
+def newton(x: float, f: Callable[[float, float], float],  iterations: int):
+    for _ in range(iterations):
+        x = x - (f(0, x) / f(1, x))
+    return x
+
+
 def get_function_from_user() -> Callable[[float, float], float]:
     print("\nPlease select a function to continue:\n")
     print("1. 4x^2 + 200x + 12")
@@ -121,6 +127,8 @@ def get_function_from_user() -> Callable[[float, float], float]:
 
 
 f = get_function_from_user()
-c = bisection(1.2, 1.78, f, 200)
+# c = bisection(1.2, 1.78, f, 200)
+c1 = regula_falsi(1.2, 1.78, f, 20)
+c2 = newton(1.2, f, 20)
 
-print(c, f(0, c))
+print(c1, c2, f(0, c1), f(0, c2))
