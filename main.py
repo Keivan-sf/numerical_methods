@@ -174,6 +174,32 @@ def get_function_from_user() -> Callable[[float, float], float]:
             return cos
 
 
+def get_function_data_from_user() -> tuple[list[float], list[float], int]:
+    n = int(input("Enter the number of points you want to give: "))
+
+    print("\nEnter all X values separated via space, for example: 1.2 4 -11.4 1.5 ...")
+    while True:
+        x = [float(i) for i in input().split()]
+        if len(x) != 3:
+            print("you have to enter exactly", n,
+                  "numbers since you have set it, please try again:")
+            continue
+        break
+
+    print("\nEnter all Y values separated via space, for example: 1.7 5 22 1.52 ...")
+    while True:
+        y = [float(i) for i in input().split()]
+        if len(x) != 3:
+            print("you have to enter exactly", n,
+                  "numbers since you have set it, please try again:")
+            continue
+        break
+
+    return x, y, n
+
+
+x, y, n = get_function_data_from_user()
+print(polynomial_to_str(lagrange(x, y, n)))
 # f = get_function_from_user()
 # # c = bisection(1.2, 1.78, f, 200)
 # c1 = regula_falsi(1.2, 1.78, f, 20)
@@ -184,7 +210,7 @@ def get_function_from_user() -> Callable[[float, float], float]:
 # print(c1, c2, c3, f(0, c1), f(0, c2), f(0, c3))
 # print(np.polymul((0), (0)))
 # print(np.polymul((2, 4), 1/4))
-print(lagrange([-1, 0, 1], [1, 1, 3], 3))
-print(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4))
-print(polynomial_to_str(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4)))
-print(polynomial_to_str(lagrange([-1, 6, 7], [1, 9, 10], 3)))
+# print(lagrange([-1, 0, 1], [1, 1, 3], 3))
+# print(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4))
+# print(polynomial_to_str(lagrange([-1, 0, 1, 2], [1, 1, 3, 7], 4)))
+# print(polynomial_to_str(lagrange([-1, 6, 7], [1, 9, 10], 3)))
