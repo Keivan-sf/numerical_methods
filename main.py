@@ -14,7 +14,7 @@ def polynomial_4(x):
     return 3 * (x ** 4) + 100*x + 55
 
 
-def bi(a: float, b: float, f: Callable[[float], float], iterations: int):
+def bisection(a: float, b: float, f: Callable[[float], float], iterations: int):
     """
         f(a) must be positive
         f(b) must be negative
@@ -69,4 +69,4 @@ def get_function_from_user() -> Callable[[float], float]:
             return math.acos
 
 
-print(bi(1, -1, get_function_from_user(), 30))
+print(bisection(1, -1, get_function_from_user(), 30))
