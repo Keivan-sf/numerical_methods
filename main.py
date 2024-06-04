@@ -138,7 +138,7 @@ def polynomial_to_str(p):
         s += (str(I) if I > 1 or n - j == 0 else "")
         s += ("x" if n - j > 0 else "")
         s += ("" if n - j <= 1 else "^" + str(n - j))
-    s = s[3:]
+    s = s[3:] if s[1] == '+' else s
     return s
 
 
